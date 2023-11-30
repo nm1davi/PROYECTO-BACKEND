@@ -1,0 +1,38 @@
+<script src="js/carrito.js"></script>
+<h1>Lista de Productos</h1>
+
+<article>
+    <table>
+        <tr>
+            <th>Titulo</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Código</th>
+            <th>Stock</th>
+            <th>Categoría</th>
+            <th>Estado</th>  
+            <th>Acción</th>
+        </tr>
+        <tbody>
+            {{#each payload}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.thumbnail}}</td>
+                <td>{{this.code}}</td>
+                <td>{{this.stock}}</td>
+                <td>{{this.category}}</td>
+                <td>{{this.status}}</td>
+                <td>
+                    <button class="boton-carrito" onclick="agregarAlCarrito('{{this._id}}')">+ Carrito</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>            
+    </table>
+    <p>Página Actual: {{page}}</p>
+    <a href="{{prevLink}}" role="button" {{#unless hasPrevPage}}disabled{{/unless}}>Anterior</a>
+    <a href="{{nextLink}}" role="button" {{#unless hasNextPage}}disabled{{/unless}}>Siguiente</a>
+</article>
